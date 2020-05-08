@@ -47,6 +47,9 @@ dependencies:
 
   fluttertoast: ^4.0.0
 
+  #引导页
+  intro_slider: ^2.2.9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
