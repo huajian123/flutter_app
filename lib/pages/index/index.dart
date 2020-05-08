@@ -14,6 +14,10 @@ class _IndexPageState extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 750, height: 1294, allowFontScaling: true);
-    return Text("3535");
+    return Global.isFirstOpen == true
+        ? Scaffold(
+            body: IntroScreen(),
+          )
+        : Global.isOfflineLogin == true ? Text("业务页面") : Login();
   }
 }
