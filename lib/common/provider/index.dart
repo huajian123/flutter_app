@@ -3,11 +3,17 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart'
     show ChangeNotifierProvider, Consumer, MultiProvider, Provider, Selector;
 import 'package:provider/single_child_widget.dart';
+import 'current_page_index.dart';
 import 'provider.dart';
 
 
 List<SingleChildWidget> providers = [
-
+  ChangeNotifierProvider<CurrentPageIndexProvider>(
+    create: (_) => CurrentPageIndexProvider(),
+  ),
+  ChangeNotifierProvider<LeftNavIndexProvider>(
+    create: (_) => LeftNavIndexProvider(),
+  )
 ];
 
 class Store {

@@ -26,9 +26,7 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: Application.router.generator,
           debugShowCheckedModeBanner: true,
           theme: AppTheme.theme,
-          home: Scaffold(
-            body: Center(child: Text("123"),),
-          ),
+          home:IndexPage(),
         ));
   }
 }
