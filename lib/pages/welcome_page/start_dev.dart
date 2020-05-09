@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/common/router/application.dart';
 import 'package:flutterapp/common/utils/color_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,14 +15,14 @@ class _StartDevState extends State<StartDev> {
   Timer _timer;
   int _count = 3; //倒计时秒数
 
-  _initTimer() {
+  void _initTimer(context) {
     // 倒计时
     _timer = Timer.periodic(new Duration(seconds: 1), (timer) {
       setState(() {
         if (_count <= 1) {
           _timer.cancel();
           _timer = null;
-          print("已经结束");
+          _goMain(context);
         } else {
           _count = _count - 1;
         }
@@ -31,11 +33,21 @@ class _StartDevState extends State<StartDev> {
   @override
   void initState() {
     super.initState();
-    _initTimer();
+    _initTimer(this.context);
   }
 
-  _goMain() {
-    print("进入业务页面");
+  _goMain(context) {
+    Application.router.navigateTo(context, "/home",
+        transition: TransitionType.cupertino, clearStack: true);
+  }
+
+  @override
+  void dispose() {
+    if (_timer != null) {
+      _timer.cancel();
+      _timer = null;
+    }
+    super.dispose();
   }
 
   @override
@@ -50,21 +62,18 @@ class _StartDevState extends State<StartDev> {
               image: AssetImage("assets/images/start_bg.png"),
               fit: BoxFit.fill,
             ),
-// child: Image.asset("assets/images/start_bg.png"),
           ),
           Positioned(
             top: 70.h,
             right: 70.w,
             child: GestureDetector(
-              onTap: (){
-                print("点击跳过了");
+              onTap: () {
+                _goMain(context);
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: ColorsUtil.hexColor(0x2f3542,alpha: 0.2),
-
-                  borderRadius: new BorderRadius.circular(20.0)
-                ),
+                    color: ColorsUtil.hexColor(0x2f3542, alpha: 0.2),
+                    borderRadius: new BorderRadius.circular(20.0)),
                 width: 160.w,
                 height: 60.h,
                 child: Center(

@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/common/router/application.dart';
 import 'package:flutterapp/common/utils/uitls.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
@@ -363,19 +364,18 @@ class IntroScreenState extends State<IntroScreen> {
       nameNextBtn: "下一页",
       slides: this.slides,
       onDonePress: (){
-        Navigator.pushReplacementNamed(
-          context,
-          "/login",
-        );
+        Application.router.navigateTo(context, "/home",
+            transition: TransitionType.cupertino, clearStack: true);
       },
       onSkipPress: (){
-        Navigator.pushReplacementNamed(
+        /*Navigator.pushReplacementNamed(
           context,
-          "/login",
-        );
+          "/home",
+        );*/
+        Application.router.navigateTo(context, "/home",
+            transition: TransitionType.cupertino, clearStack: true);
       },
       colorDot: ColorsUtil.hexColor(0xffffff),
-
     );
   }
 }
