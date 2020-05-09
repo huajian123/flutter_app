@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/pages/pages.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Layout extends StatefulWidget {
   @override
@@ -20,8 +21,6 @@ class _LayoutState extends State<Layout> {
       ..add(Classification())
       ..add(Chat())
       ..add(PersonalCenter());
-
-    pages.map((e) {});
   }
 
   BottomNavigationBarItem _buildBottomNavItem({Icon icon, Text text}) {
@@ -36,9 +35,10 @@ class _LayoutState extends State<Layout> {
     return Scaffold(
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize:22.sp,
         type: BottomNavigationBarType.fixed,
+        currentIndex: _currentIndex,
         onTap: (index) {
-          print("点击了");
           setState(() {
             _currentIndex = index;
           });
