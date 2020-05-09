@@ -17,5 +17,5 @@ Handler startAdvHander = Handler(
 /*-------首页------*/
 Handler homeHander = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return Home();
+      return Layout();
     });
