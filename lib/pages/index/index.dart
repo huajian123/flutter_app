@@ -18,6 +18,6 @@ class _IndexPageState extends State<IndexPage> {
         ? Scaffold(
             body: IntroScreen(),
           )
-        : Global.isOfflineLogin == true ? Text("业务页面") : Login();
+        : Global.isOfflineLogin == true ? Text("业务页面") : StartDev();
   }
 }
