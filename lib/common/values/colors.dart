@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class AppColors {
   /// 主背景 白色
   static const Color primaryBackground = Color.fromARGB(255, 255, 255, 255);
@@ -33,4 +35,10 @@ class AppColors {
 
   /// tabBar 默认颜色 灰色
   static const Color tabBarElement = Color.fromARGB(255, 208, 208, 208);
+
+
+// *****************************************
+
+// 输入框填充字体颜色
+static const Color  placeholderColor=Colors.black38;
 }
