@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/common/utils/uitls.dart';
 import 'package:flutterapp/pages/pages.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,10 +45,10 @@ class _LayoutState extends State<Layout> {
           });
         },
         items: [
-          _buildBottomNavItem(icon: Icon(Icons.home), text: Text("首页")),
-          _buildBottomNavItem(icon: Icon(Icons.access_alarm), text: Text("关注")),
-          _buildBottomNavItem(icon: Icon(Icons.access_alarm), text: Text("分类")),
-          _buildBottomNavItem(icon: Icon(Icons.access_alarm), text: Text("聊天")),
+          _buildBottomNavItem(icon: Icon(Iconfont.shouye), text: Text("首页")),
+          _buildBottomNavItem(icon: Icon(Iconfont.guanzhu), text: Text("关注")),
+          _buildBottomNavItem(icon: Icon(Iconfont.fenlei), text: Text("分类")),
+          _buildBottomNavItem(icon: Icon(Iconfont.liaotian), text: Text("聊天")),
           _buildBottomNavItem(
               icon: Icon(Icons.access_alarm), text: Text("个人中心")),
         ],
