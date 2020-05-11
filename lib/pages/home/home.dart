@@ -9,24 +9,21 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-
-
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin{
+class _HomeState extends State<Home>
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   TabController _tabController;
-
 
   // 搜索框
   Widget _buildSearch() {
     return DefaultTextStyle(
-      style: TextStyle(
-          color: AppColors.placeholderColor
-      ),
+      style: TextStyle(color: AppColors.placeholderColor),
       child: Container(
         height: 70.h,
         width: double.infinity,
         margin: EdgeInsets.symmetric(horizontal: 30.w),
         decoration: BoxDecoration(
-            borderRadius: new BorderRadius.circular(10.0), color: Colors.black12),
+            borderRadius: new BorderRadius.circular(10.0),
+            color: Colors.black12),
         child: Stack(
           children: <Widget>[
             Center(
@@ -36,7 +33,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin, Automa
                   Baseline(
                     baseline: 48.h,
                     baselineType: TextBaseline.alphabetic,
-                    child: Icon(Icons.search,color: AppColors.placeholderColor,),
+                    child: Icon(
+                      Icons.search,
+                      color: AppColors.placeholderColor,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 5.w),
@@ -51,7 +51,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin, Automa
             Positioned(
               right: 10.w,
               height: 70.h,
-              child: Icon(Icons.photo_camera,color: AppColors.placeholderColor,),
+              child: Icon(
+                Icons.photo_camera,
+                color: AppColors.placeholderColor,
+              ),
             )
           ],
         ),
@@ -59,60 +62,71 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin, Automa
     );
   }
 
-// 主体内容AppBar
-  Widget _buildContextAppBar(){
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        border: Border(
-        bottom: BorderSide(
-        width: 1,
-        color: ColorsUtil.hexColor(0xE6E6E6),
-      ),
-    ),
-      ),
-      child: TabBar(
-        controller: _tabController,
-        labelColor: ColorsUtil.hexColor(0xDB3535),
-        indicatorColor: ColorsUtil.hexColor(0xDB3535),
-        unselectedLabelColor: ColorsUtil.hexColor(0x222222),
-        indicatorWeight: 0,
-        indicator: MyUnderlineTabIndicator(
-          borderSide: BorderSide(
-            width: 2.0,
-            color: ColorsUtil.hexColor(0xDB3535),
-          ),
-          lineWidth: 50.w,
-        ),
-        indicatorSize: TabBarIndicatorSize.label,
-        // 指示器的大小计算方式，以文本方式
-        isScrollable: true,
-        //labelPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-        labelStyle: TextStyle(fontSize: 30.sp),
-        tabs: <Widget>[
-          Tab(text: '热门'),
-          Tab(text: '手机'),
-          Tab(text: '电脑'),
-          Tab(text: '水果'),
-          Tab(text: '食品'),
-          Tab(text: '内衣'),
-          Tab(text: '医药'),
-          Tab(text: '母婴'),
-          Tab(text: '百货'),
-          Tab(text: '车品'),
-        ],
-      ),
-    );
-  }
-
 // 主体内容
-  Widget _buildContext(){
+  Widget _buildContext() {
     return Column(
       children: <Widget>[
-        _buildContextAppBar(),
+        Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                width: 1,
+                color: ColorsUtil.hexColor(0xE6E6E6),
+              ),
+            ),
+          ),
+          child: TabBar(
+            controller: _tabController,
+            labelColor: ColorsUtil.hexColor(0xDB3535),
+            indicatorColor: ColorsUtil.hexColor(0xDB3535),
+            unselectedLabelColor: ColorsUtil.hexColor(0x222222),
+            indicatorWeight: 0,
+            indicator: MyUnderlineTabIndicator(
+              borderSide: BorderSide(
+                width: 2.0,
+                color: ColorsUtil.hexColor(0xDB3535),
+              ),
+              lineWidth: 50.w,
+            ),
+            indicatorSize: TabBarIndicatorSize.label,
+            // 指示器的大小计算方式，以文本方式
+            isScrollable: true,
+            //labelPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+            labelStyle: TextStyle(fontSize: 30.sp),
+            tabs: <Widget>[
+              Tab(text: '热门'),
+              Tab(text: '手机'),
+              Tab(text: '电脑'),
+              Tab(text: '水果'),
+              Tab(text: '食品'),
+              Tab(text: '内衣'),
+              Tab(text: '医药'),
+              Tab(text: '母婴'),
+              Tab(text: '百货'),
+              Tab(text: '车品'),
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              Text("期货数据"),
+              Text("价差指标"),
+              Text("期货数据"),
+              Text("价差指标"),
+              Text("期货数据"),
+              Text("价差指标"),
+              Text("期货数据"),
+              Text("价差指标"),
+              Text("期货数据"),
+              Text("价差指标"),
+            ],
+          ),
+        ),
       ],
     );
-
   }
 
   @override
@@ -124,7 +138,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin, Automa
           child: Column(
             children: <Widget>[
               _buildSearch(),
-              _buildContext(),
+              Expanded(
+                flex: 1,
+                child: _buildContext(),
+              ),
             ],
           ),
         ),
